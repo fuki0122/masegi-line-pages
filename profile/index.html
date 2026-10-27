@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
+<title>柵木祐輝のプロフィール</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* 縦一列のプロフィール。海と空の色(リッチメニューと同じ)で、見出しは明朝 */
+:root{
+  --bg:#f5faf9; --surface:#ffffff; --fg:#17312e; --muted:#53706b;
+  --accent:#0e8f6e; --accent-2:#1f8fb3; --line:#d5e6e2;
+  --display:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1c1b; --surface:#16302d; --fg:#e4f2ef; --muted:#9dbbb5;
+  --accent:#4fd1a5; --accent-2:#6cc3e3; --line:#24443f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1c1b; --surface:#16302d; --fg:#e4f2ef; --muted:#9dbbb5;
+  --accent:#4fd1a5; --accent-2:#6cc3e3; --line:#24443f; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.85}
+.wrap{max-width:640px;margin:0 auto;padding-block:40px 64px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:grid;gap:44px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.4}
+h1{font-size:2.2rem}
+h2{font-size:1.35rem;color:var(--accent)}
+p{margin:0}
+.kana{font-size:.8rem;letter-spacing:.2em;color:var(--muted)}
+.motto{font-family:var(--display);font-size:1.15rem;border-left:3px solid var(--accent-2);padding-left:14px}
+.hero{display:grid;gap:14px}
+section{display:grid;gap:14px}
+dl{display:grid;grid-template-columns:7em 1fr;gap:8px 12px;margin:0}
+dt{color:var(--muted);font-size:.9rem}
+dd{margin:0}
+.list{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.list li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:4px}
+.list b{font-weight:700}
+.cta{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;
+  padding:14px;border-radius:999px}
+:root[data-theme="dark"] .cta{color:#0f1c1b}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cta{color:#0f1c1b}}
+.cta:focus-visible{outline:3px solid var(--accent-2);outline-offset:3px}
+.small{font-size:.85rem;color:var(--muted)}
+</style>
+
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <p class="kana">MASEGI YUKI</p>
+    <h1>柵木 祐輝</h1>
+    <p class="motto">私と出会ったすべての人の人生を、より豊かに輝かせる</p>
+    <p>保険やNISAを使って、今の楽しみと将来の安心を両立するお金の計画をつくる「専属ライフアドバイザー」です。特定の保険会社1社に縛られずに、あなたに合う形を一緒に考えます。</p>
+  </header>
+
+  <section>
+    <h2>プロフィール</h2>
+    <dl>
+      <dt>名前</dt><dd>柵木 祐輝(ませぎ ゆうき)</dd>
+      <dt>出身</dt><dd>愛知県岡崎市</dd>
+      <dt>資格</dt><dd>証券外務員</dd>
+      <dt>対応エリア</dt><dd>全国(オンライン相談も可)</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>大事にしていること</h2>
+    <ul class="list">
+      <li><b>今しかできない体験にも、お金を使う</b><span>愛読書は『DIE WITH ZERO』。目的のない貯め込みではなく、「いくらまでなら今使っていいか」が分かる計画をつくります。</span></li>
+      <li><b>手元に残るお金を増やす</b><span>クレジットカードやポイ活、マイルでの旅行、車の買い方、結婚費用、住まいの相談まで、知っているだけで得をする情報をお伝えします。</span></li>
+      <li><b>仕事と収入の相談にも乗る</b><span>長く採用とマネジメントに関わってきた経験から、仕事の軸の整理や転職の相談にも伴走します。</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>相談できること</h2>
+    <ul class="list">
+      <li><b>ライフプラン</b><span>結婚・住まい・子ども・老後まで、人生のお金の流れを一緒に描きます。</span></li>
+      <li><b>貯金と運用</b><span>NISAなどを使って、何のために増やすのかを決めてから始めます。</span></li>
+      <li><b>保険の見直し</b><span>今の保障が合っているかを確かめ、必要な分だけに整えます。</span></li>
+      <li><b>住まい・お金全般</b><span>住宅、ポイ活、車、結婚費用など、どんな小さなことでも。</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <a class="cta" href="https://line.me/R/ti/p/@171tfpur">LINEで相談する(無料)</a>
+    <p class="small">「こんなこと聞いていいのかな?」ということでも大丈夫です。トークにそのまま送ってください。</p>
+  </section>
+</main>
+</body>
+</html>
