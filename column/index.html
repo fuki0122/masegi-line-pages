@@ -3,96 +3,192 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>*{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
 <title>柵木祐輝のお金のコラム</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap">
 <style>
-/* 目次+記事を縦に並べる読み物。プロフィールと同じ海と空の色 */
+/* 緑のヘッダー+記事カードの一覧+右に最近の投稿とカテゴリ(スマホでは下へ)。記事は一覧の下に続けて並ぶ */
+*{box-sizing:border-box}
 :root{
-  --bg:#f5faf9; --surface:#ffffff; --fg:#17312e; --muted:#53706b;
-  --accent:#0e8f6e; --accent-2:#1f8fb3; --line:#d5e6e2;
-  --display:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
-  --body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+  --bg:#eef3f1; --surface:#ffffff; --fg:#1f2d2a; --muted:#5f716d;
+  --brand:#2da44e; --brand-dark:#1f7f3a; --tag:#f0a020; --line:#dbe5e1;
+  --round:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN",sans-serif;
+  --body:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+  color-scheme:light;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0f1c1b; --surface:#16302d; --fg:#e4f2ef; --muted:#9dbbb5;
-  --accent:#4fd1a5; --accent-2:#6cc3e3; --line:#24443f; color-scheme:dark}}
+  --bg:#111916; --surface:#1a2622; --fg:#e3eeea; --muted:#9fb3ad; --brand:#3cbf62; --brand-dark:#2a8f47; --tag:#f3b443; --line:#2a3a35; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0f1c1b; --surface:#16302d; --fg:#e4f2ef; --muted:#9dbbb5;
-  --accent:#4fd1a5; --accent-2:#6cc3e3; --line:#24443f; color-scheme:dark}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.9}
-.wrap{max-width:640px;margin:0 auto;padding-block:40px 64px;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
-  display:grid;gap:48px}
-h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.45}
-h1{font-size:2rem}
-h2{font-size:1.35rem}
-h3{font-size:1.05rem;color:var(--accent)}
-p{margin:0}
-.lead{color:var(--muted)}
-.toc{display:grid;gap:10px;margin:0;padding:0;list-style:none}
-.toc a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px;
-  color:var(--fg);text-decoration:none}
-.toc a:focus-visible,.cta:focus-visible{outline:3px solid var(--accent-2);outline-offset:3px}
-.tag{font-size:.75rem;letter-spacing:.12em;color:var(--accent-2)}
-article{display:grid;gap:14px;border-top:1px solid var(--line);padding-top:32px}
-.point{background:var(--surface);border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0}
-.cta{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:14px;border-radius:999px}
-:root[data-theme="dark"] .cta{color:#0f1c1b}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cta{color:#0f1c1b}}
-.small{font-size:.85rem;color:var(--muted)}
+  --bg:#111916; --surface:#1a2622; --fg:#e3eeea; --muted:#9fb3ad; --brand:#3cbf62; --brand-dark:#2a8f47; --tag:#f3b443; --line:#2a3a35; color-scheme:dark}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.85}
+a{color:inherit}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.site{background:var(--brand);color:#fff}
+header.site .in{max-width:1080px;margin:0 auto;padding-block:18px 10px;display:grid;justify-items:center;gap:6px}
+.logo{font-family:var(--round);font-weight:800;font-size:1.7rem;letter-spacing:.04em;text-decoration:none;color:#fff}
+.logo small{display:block;text-align:center;font-size:.72rem;font-weight:700;letter-spacing:.12em;opacity:.9}
+nav.top{display:flex;gap:22px;font-weight:700;font-size:.9rem}
+nav.top a{text-decoration:none;color:#fff}
+.layout{max-width:1080px;margin:0 auto;padding-block:24px 56px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start}
+@media (max-width:860px){.layout{grid-template-columns:minmax(0,1fr)}}
+.intro{margin:0 0 18px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--surface);border-radius:8px;overflow:hidden;text-decoration:none;display:grid;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.thumb{position:relative;aspect-ratio:16/9;max-width:100%;display:grid;place-items:center}
+.thumb svg{width:34%;height:auto}
+.thumb .cat{position:absolute;top:10px;left:10px}
+.cat{background:var(--tag);color:#fff;font-size:.72rem;font-weight:700;padding:2px 10px;border-radius:3px;line-height:1.7}
+.card .meta{padding:10px 14px 0;font-size:.78rem;color:var(--muted)}
+.card h2{font-size:.98rem;line-height:1.6;margin:2px 14px 14px;font-weight:700}
+aside{display:grid;gap:22px}
+.box{background:var(--surface);border-radius:8px;overflow:hidden}
+.box h3{margin:0;background:var(--brand);color:#fff;font-size:.95rem;padding:8px 14px;font-family:var(--round)}
+.box ul{list-style:none;margin:0;padding:6px 14px}
+.box li{border-bottom:1px dashed var(--line);padding:8px 0;font-size:.88rem;line-height:1.6}
+.box li:last-child{border-bottom:0}
+.box a{text-decoration:none}
+.box a:hover,.card:hover h2{color:var(--brand-dark)}
+.articles{display:grid;gap:28px;margin-top:40px}
+article{background:var(--surface);border-radius:8px;padding:24px max(16px,4%);display:grid;gap:12px;scroll-margin-top:12px}
+article h2{font-size:1.3rem;line-height:1.55;margin:0;text-wrap:balance}
+article h3{font-size:1.02rem;margin:10px 0 0;padding-left:10px;border-left:4px solid var(--brand)}
+article p{margin:0}
+article ul{margin:0;padding-left:1.3em}
+.ameta{display:flex;gap:10px;align-items:center;font-size:.8rem;color:var(--muted)}
+.point{background:color-mix(in srgb,var(--brand) 10%,var(--surface));border-radius:6px;padding:12px 14px}
+.back{font-size:.85rem;color:var(--brand-dark);font-weight:700;text-decoration:none}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:color-mix(in srgb,var(--brand) 12%,var(--surface))}
+.cta{display:block;text-align:center;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;padding:13px;border-radius:999px}
+.note{font-size:.8rem;color:var(--muted)}
+footer{background:var(--brand-dark);color:#fff;text-align:center;font-size:.8rem;padding-block:16px}
 </style>
-
 </head>
 <body>
-<main class="wrap">
-  <header style="display:grid;gap:12px">
-    <p class="tag">COLUMN</p>
-    <h1>お金のコラム</h1>
-    <p class="lead">今の楽しみと将来の安心を両立するための、お金の考え方をまとめています。</p>
-    <ul class="toc">
-      <li><a href="#die-with-zero"><span class="tag">考え方</span><br>貯めるだけで終わらない「使い切る」計画</a></li>
-      <li><a href="#nisa"><span class="tag">運用</span><br>NISAは「何のために増やすか」から始める</a></li>
-      <li><a href="#hoken"><span class="tag">保険</span><br>保険を見直したほうがいい3つのタイミング</a></li>
-    </ul>
-  </header>
+<header class="site gutter">
+  <div class="in">
+    <a class="logo" href="#top" id="top">柵木祐輝のお金のコラム<small>MASEGI YUKI COLUMN</small></a>
+    <nav class="top"><a href="#top">ホーム</a><a href="../profile/">プロフィール</a><a href="https://line.me/R/ti/p/@171tfpur">LINEで相談</a></nav>
+  </div>
+</header>
 
-  <article id="die-with-zero">
-    <p class="tag">考え方</p>
-    <h2>貯めるだけで終わらない「使い切る」計画</h2>
-    <p>将来が不安で、今やりたいことを我慢していませんか。お金は使うためにあります。貯めることだけが目的になると、体力も時間もある今しかできない経験を逃してしまいます。</p>
-    <h3>「今いくら使っていいか」を知る</h3>
-    <p>結婚・住まい・子ども・老後に、いつ・いくら必要かを先に描くと、今自由に使えるお金がはっきりします。不安の正体は「分からないこと」です。数字にすると、安心して今を楽しめます。</p>
-    <p class="point">まずは、これから10年でやりたいことを3つ書き出してみてください。それが計画の出発点です。</p>
-  </article>
+<div class="layout gutter">
+  <main>
+    <p class="intro">お金について学びたい、運用って何?、保険はどう入るの?。暮らしのお金にすぐ役立つ話を、やさしくまとめています。</p>
+    <div class="cards" id="cards"></div>
+    <div class="articles" id="articles"></div>
+  </main>
+  <aside>
+    <section class="box"><h3>最近の投稿</h3><ul id="recent"></ul></section>
+    <section class="box"><h3>カテゴリー</h3><ul id="cats"></ul></section>
+    <a class="cta" href="https://line.me/R/ti/p/@171tfpur">LINEで無料相談する</a>
+  </aside>
+</div>
+<footer class="gutter">© 柵木祐輝のお金のコラム</footer>
 
-  <article id="nisa">
-    <p class="tag">運用</p>
-    <h2>NISAは「何のために増やすか」から始める</h2>
-    <p>NISAは、投資で増えた分に税金がかからない国の制度です。2024年からの新しいNISAでは、1年に最大360万円(つみたて投資枠120万円+成長投資枠240万円)、一生で1,800万円まで使えます。</p>
-    <h3>目的で、選び方が変わる</h3>
-    <p>10年後の住宅の頭金と、30年後の老後資金では、向いている商品も、毎月の金額も違います。「みんながやっているから」で始めるより、目的と時期を決めてから始めるほうが、途中でやめずに続けられます。</p>
-    <p class="point">投資にはお金が減ることもあります。生活費の数か月分は、すぐ使える貯金として残しておきましょう。</p>
-  </article>
+<script>
+const ICON = {
+  "お金": '<path d="M12 40h40v14H12z M18 28h28v12H18z M24 16h16v12H24z" fill="#fff" opacity=".95"/>',
+  "医療保険": '<path d="M26 10h12v16h16v12H38v16H26V38H10V26h16z" fill="#fff"/>',
+  "生命保険": '<path d="M32 54C18 44 8 36 8 24a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 12-10 20-24 30z" fill="#fff"/>',
+  "損害保険": '<path d="M32 6l22 8v14c0 14-9 24-22 30C19 52 10 42 10 28V14z" fill="#fff"/>',
+  "教育資金": '<path d="M32 12L4 26l28 14 28-14z M16 34v10c8 6 24 6 32 0V34L32 42z" fill="#fff"/>',
+  "介護保険": '<path d="M20 14a6 6 0 1 1 0 .1z M14 24h12l6 14h12v6H28l-4-8v20h-8z" fill="#fff"/>',
+  "就業不能保険": '<path d="M10 20h44v30H10z M24 12h16v8H24z" fill="none" stroke="#fff" stroke-width="5"/>'
+};
+const BG = {"お金":"#4fa3d9","医療保険":"#e07a6b","生命保険":"#e58fb0","損害保険":"#5b8fd6","教育資金":"#7bbf5a","介護保険":"#9b7fd1","就業不能保険":"#e0a24a"};
 
-  <article id="hoken">
-    <p class="tag">保険</p>
-    <h2>保険を見直したほうがいい3つのタイミング</h2>
-    <p>保険は一度入ると、そのままになりがちです。でも、必要な保障は暮らしの変化に合わせて変わります。</p>
-    <h3>結婚したとき・子どもが生まれたとき</h3>
-    <p>守る人が増えると、万一のときに必要なお金も増えます。</p>
-    <h3>家を買ったとき</h3>
-    <p>住宅ローンには団体信用生命保険が付くことが多く、今の死亡保障と重なっている場合があります。</p>
-    <h3>収入や働き方が変わったとき</h3>
-    <p>転職や独立で、会社の保障が変わることがあります。</p>
-    <p class="point">今の保険証券を写真に撮って送ってもらえれば、どこが重なっているかを一緒に確かめます。</p>
-  </article>
+const POSTS = [
+{id:"iryouhi",cat:"お金",date:"2026年10月27日",title:"医療費控除とは?対象になる費用と確定申告の進め方",body:`
+<p>1年間(1月〜12月)に家族みんなで払った医療費が多かった年は、確定申告をすると税金が戻ってくることがあります。これが「医療費控除」です。</p>
+<h3>いくらから使える?</h3>
+<p>目安は、払った医療費から、保険金などで戻ってきたお金を引いて、<b>10万円を超えた分</b>です(その年の所得が200万円未満の人は、所得の5%を超えた分)。控除できるのは最大200万円までです。</p>
+<h3>対象になるもの・ならないもの</h3>
+<div class="table-wrap"><table><tr><th>対象になる例</th><th>対象にならない例</th></tr>
+<tr><td>病院・歯医者の診察代、入院費<br>治療のための薬代(市販薬も含む)<br>通院の電車・バス代<br>出産の費用(健診・分娩)</td><td>美容目的の施術<br>予防のための健康診断(異常がなかった場合)<br>ビタミン剤などのサプリ<br>自家用車で通院したガソリン代</td></tr></table></div>
+<h3>進め方</h3>
+<ul><li>家族の分もまとめて、所得が一番高い人が申告するとお得になりやすい</li><li>健康保険の「医療費のお知らせ」を使えば、明細書づくりがかんたん</li><li>会社員の還付申告は、5年前の分までさかのぼってできる</li></ul>
+<p class="point">市販薬をよく買う人は「セルフメディケーション税制」(対象の薬が年1万2千円を超えた分)との選べる方を比べましょう。両方は使えません。</p>`},
+{id:"shussan",cat:"お金",date:"2026年10月27日",title:"出産前後にもらえるお金と、申請先のまとめ",body:`
+<p>出産のときは、もらえるお金がいくつもあります。申請しないともらえないものが多いので、先に一覧で押さえておきましょう。</p>
+<div class="table-wrap"><table><tr><th>お金</th><th>内容</th><th>申請先</th></tr>
+<tr><td>出産育児一時金</td><td>子ども1人につき50万円(産科医療補償制度の病院の場合)</td><td>加入している健康保険(病院が手続きを代わりにすることが多い)</td></tr>
+<tr><td>出産手当金</td><td>会社員などが産休中に、給料のおよそ3分の2</td><td>勤め先の健康保険</td></tr>
+<tr><td>育児休業給付金</td><td>育休中に、休む前の給料の67%(半年後から50%)</td><td>勤め先を通じてハローワーク</td></tr>
+<tr><td>児童手当</td><td>高校生年代まで毎月。第3子以降は月3万円</td><td>住んでいる市区町村</td></tr></table></div>
+<h3>忘れやすいポイント</h3>
+<ul><li>児童手当は、生まれた日の翌日から15日以内に申請しないと、さかのぼってもらえない月が出ます</li><li>自営業の人は、出産手当金・育児休業給付金の対象外です。そのぶん貯金や保険での備えが大事です</li></ul>
+<p class="point">金額や条件は変わることがあります。手続きの前に、健康保険や市区町村の最新の案内を確かめてください。</p>`},
+{id:"seiho-koujo",cat:"生命保険",date:"2026年10月27日",title:"控除証明書が届いたら確認。生命保険料控除のしくみ",body:`
+<p>秋になると保険会社から届く「生命保険料控除証明書」。年末調整で出すと、所得税と住民税が少し安くなります。</p>
+<h3>3つの枠がある</h3>
+<p>2012年以降に入った保険は、「一般(死亡保障など)」「介護医療」「個人年金」の3つの枠に分かれます。所得税では、それぞれ最大4万円、合わせて最大12万円まで所得から引けます。</p>
+<h3>枠を使い切れているか</h3>
+<ul><li>医療保険しか入っていない人は、介護医療の枠しか使えていない</li><li>老後の積み立てを個人年金保険にすると、個人年金の枠も使える</li></ul>
+<p class="point">控除のためだけに保険に入るのはおすすめしません。必要な保障を整えたうえで、使える枠を確かめましょう。証明書の写真を送ってもらえれば一緒に確認します。</p>`},
+{id:"jitensha",cat:"損害保険",date:"2026年10月27日",title:"自転車保険に入る前に。自動車保険や火災保険の「特約」を確かめよう",body:`
+<p>愛知県をはじめ、多くの都道府県で自転車の保険への加入が義務になっています。でも、新しく入る前に確かめてほしいことがあります。</p>
+<h3>「個人賠償責任特約」がついていないか</h3>
+<p>自転車で人にけがをさせたときの賠償は、自動車保険・火災保険・クレジットカードなどの「個人賠償責任特約」でカバーできることが多いです。この特約は、<b>一緒に住む家族全員</b>が対象になるのが一般的です。</p>
+<h3>確かめる3つの点</h3>
+<ul><li>補償額が無制限か、1億円以上あるか</li><li>示談交渉サービスがついているか</li><li>家族の範囲(別居の学生の子どもも入るか)</li></ul>
+<p class="point">特約が重なっていると保険料のムダになります。今の証券を見ながら、どれを残すか一緒に整理しましょう。</p>`},
+{id:"inflation",cat:"お金",date:"2026年10月27日",title:"値上げが続く時代の、預金だけに頼らないお金の置き方",body:`
+<p>物の値段が上がると、同じ100万円で買えるものが減っていきます。銀行に置いたままでは、お金の「力」が少しずつ弱くなります。</p>
+<h3>守りと攻めに分ける</h3>
+<ul><li><b>守り:</b>生活費の3〜6か月分は、すぐ使える預金に</li><li><b>近い予定:</b>数年以内に使うお金(車・結婚など)は、値動きの小さいものに</li><li><b>攻め:</b>10年以上使わないお金は、NISAなどで世界に分散して長く持つ</li></ul>
+<h3>NISAを使う</h3>
+<p>新しいNISAは、増えた分に税金がかかりません。年に最大360万円、一生で1,800万円まで使えます。</p>
+<p class="point">投資は元本が減ることもあります。何のために、いつまでに使うお金かを決めてから始めましょう。</p>`},
+{id:"kougaku",cat:"医療保険",date:"2026年10月27日",title:"医療保険を考える前に知りたい「高額療養費制度」",body:`
+<p>日本の健康保険には、1か月の医療費の自己負担に上限がある「高額療養費制度」があります。医療保険を選ぶ前に、まずここを知っておきましょう。</p>
+<h3>上限の目安(70歳未満)</h3>
+<p>年収およそ370万〜770万円の人なら、1か月の上限はおよそ8万円台です。それ以上かかっても、超えた分は戻ってきます。</p>
+<h3>それでもかかるお金</h3>
+<ul><li>入院中の食事代や、差額ベッド代</li><li>先進医療の技術料</li><li>働けない間に減る収入</li></ul>
+<p class="point">医療保険は「制度でカバーされない部分」を補うものです。貯金でまかなえるなら、入りすぎないことも大事です。上限額は所得で変わり、見直しも議論されているので、最新の金額を確かめてください。</p>`},
+{id:"shugyo",cat:"就業不能保険",date:"2026年10月27日",title:"病気やけがで働けなくなったら?収入の備えを確かめる",body:`
+<p>入院費より大きくなりやすいのが、「働けない間の収入の減り」です。</p>
+<h3>会社員と自営業で大きく違う</h3>
+<div class="table-wrap"><table><tr><th></th><th>会社員・公務員</th><th>自営業・フリーランス</th></tr>
+<tr><td>病気で休んだとき</td><td>傷病手当金で、給料のおよそ3分の2を最長1年6か月</td><td>国民健康保険には基本的にない</td></tr>
+<tr><td>長く働けないとき</td><td>障害年金(障害基礎+障害厚生)</td><td>障害年金(障害基礎のみ)</td></tr></table></div>
+<p class="point">自営業の人や、住宅ローンがある人は、就業不能保険を検討する価値があります。毎月の固定費から、いくら必要かを一緒に計算しましょう。</p>`},
+{id:"kyouiku",cat:"教育資金",date:"2026年10月27日",title:"子どもの教育費はいくら?貯め方の3つの選択肢",body:`
+<p>教育費は、幼稚園から大学まで全部公立でもおよそ1,000万円前後、私立が多いとさらに増えると言われます。一番お金がかかるのは大学の時期です。</p>
+<h3>貯め方の選択肢</h3>
+<ul><li><b>児童手当を使わずに貯める:</b>0歳から高校生年代まで受け取ると、合計でおよそ200万円以上になる</li><li><b>NISAで積み立てる:</b>大学まで時間があるなら、増やしながら準備できる</li><li><b>学資保険:</b>決まった時期に決まった額を受け取れる安心感がある</li></ul>
+<p class="point">大学入学の時期から逆算して、「いつ・いくら」を決めると、毎月の積立額が分かります。</p>`},
+{id:"kaigo",cat:"介護保険",date:"2026年10月27日",title:"40歳から払う介護保険。親の介護が始まる前に知っておくこと",body:`
+<p>40歳になると、健康保険と一緒に介護保険料を払い始めます。介護が必要になったとき、介護サービスを1〜3割の負担で使えるしくみです。</p>
+<h3>まず相談する先</h3>
+<p>親の介護が気になったら、住んでいる地域の「地域包括支援センター」に相談します。要介護認定の申請も手伝ってもらえます。</p>
+<h3>お金の準備</h3>
+<ul><li>介護費用は、親自身の年金と貯金から出すのが基本</li><li>親の収入・貯金・保険を、元気なうちに家族で共有しておく</li></ul>
+<p class="point">介護は突然始まることが多いです。「親のお金の棚卸し」を一度やっておくだけで、いざというとき慌てずにすみます。</p>`},
+{id:"gaika",cat:"生命保険",date:"2026年10月27日",title:"外貨建て保険をすすめられたら確かめたい3つのこと",body:`
+<p>ドルなど外国のお金で運用する保険は、日本の保険より利回りが高く見えることがあります。でも、入る前に確かめたいことがあります。</p>
+<ul><li><b>為替:</b>受け取るときに円高だと、円に直した金額が減る</li><li><b>手数料:</b>円からドルに替えるとき・戻すときに手数料がかかる</li><li><b>途中解約:</b>早くやめると、払った額より少なく戻ることが多い</li></ul>
+<p class="point">「保障」と「運用」を分けて考えると、自分に合うかが見えやすくなります。すすめられた商品の資料を送ってもらえれば、中立の立場で一緒に見ます。</p>`}
+];
 
-  <section style="display:grid;gap:12px">
-    <a class="cta" href="https://line.me/R/ti/p/@171tfpur">LINEで相談する(無料)</a>
-    <p class="small">コラムで分からなかったところも、トークにそのまま送ってください。</p>
-  </section>
-</main>
+const esc = s => s.replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const thumb = p => `<div class="thumb" style="background:${BG[p.cat]}"><span class="cat">${esc(p.cat)}</span><svg viewBox="0 0 64 64" aria-hidden="true">${ICON[p.cat]}</svg></div>`;
+document.getElementById("cards").innerHTML = POSTS.map(p =>
+  `<a class="card" href="#${p.id}">${thumb(p)}<div class="meta">${esc(p.date)}</div><h2>${esc(p.title)}</h2></a>`).join("");
+document.getElementById("articles").innerHTML = POSTS.map(p =>
+  `<article id="${p.id}"><div class="ameta"><span class="cat">${esc(p.cat)}</span><span>${esc(p.date)}</span></div><h2>${esc(p.title)}</h2>${p.body}<a class="cta" href="https://line.me/R/ti/p/@171tfpur">この記事についてLINEで相談する</a><a class="back" href="#top">記事一覧に戻る</a></article>`).join("");
+document.getElementById("recent").innerHTML = POSTS.slice(0,5).map(p => `<li><a href="#${p.id}">${esc(p.title)}</a></li>`).join("");
+const cats = [...new Set(POSTS.map(p => p.cat))];
+document.getElementById("cats").innerHTML = cats.map(c => {
+  const first = POSTS.find(p => p.cat === c);
+  return `<li><a href="#${first.id}">${esc(c)}(${POSTS.filter(p => p.cat === c).length})</a></li>`;
+}).join("");
+</script>
 </body>
 </html>
