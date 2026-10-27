@@ -34,7 +34,7 @@ nav.top a{text-decoration:none;color:#fff}
 @media (max-width:860px){.layout{grid-template-columns:minmax(0,1fr)}}
 .intro{margin:0 0 18px}
 .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-@media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}.thumb{aspect-ratio:21/9}.thumb svg{width:22%}}
 .card{background:var(--surface);border-radius:8px;overflow:hidden;text-decoration:none;display:grid;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .card:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
 .thumb{position:relative;aspect-ratio:16/9;max-width:100%;display:grid;place-items:center}
@@ -93,7 +93,7 @@ footer{background:var(--brand-dark);color:#fff;text-align:center;font-size:.8rem
 
 <script>
 const ICON = {
-  "お金": '<path d="M12 40h40v14H12z M18 28h28v12H18z M24 16h16v12H24z" fill="#fff" opacity=".95"/>',
+  "お金": '<circle cx="32" cy="32" r="24" fill="#fff"/><text x="32" y="42" text-anchor="middle" font-size="28" font-weight="700" fill="#4fa3d9" font-family="sans-serif">¥</text>',
   "医療保険": '<path d="M26 10h12v16h16v12H38v16H26V38H10V26h16z" fill="#fff"/>',
   "生命保険": '<path d="M32 54C18 44 8 36 8 24a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 12-10 20-24 30z" fill="#fff"/>',
   "損害保険": '<path d="M32 6l22 8v14c0 14-9 24-22 30C19 52 10 42 10 28V14z" fill="#fff"/>',
